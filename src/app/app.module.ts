@@ -10,6 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { FullComponent } from './layouts/full/full.component';
 import { BlankComponent } from './layouts/blank/blank.component';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 import { NavigationComponent } from './shared/header-navigation/navigation.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { BreadcrumbComponent } from './shared/breadcrumb/breadcrumb.component';
@@ -41,10 +43,11 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   imports: [
     CommonModule,
     BrowserModule,
-    BrowserAnimationsModule,   
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot(),  
+    AngularFontAwesomeModule,
+    NgbModule.forRoot(),
     PerfectScrollbarModule,
     AppRoutingModule
   ],
