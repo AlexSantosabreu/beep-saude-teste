@@ -11,10 +11,9 @@ export const routes: Routes = [
     component: FullComponent,
     children: [
         { path: '', redirectTo: '/starter', pathMatch: 'full' },
-
         { path: 'starter', loadChildren: './starter/starter.module#StarterModule' },
         { path: 'icons', loadChildren: './icons/icons.module#IconsModule' },
-        { path: 'forms', loadChildren: './form/forms.module#FormModule' }
+
     ]
 },
 {
