@@ -24,11 +24,11 @@
 
                 <div class="input-group">
                   <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">seta</button>
+                    <button class="btn btn-secondary" type="button" (click)="nextDay(-1)" >seta</button>
                   </span>
                   <input type="date" name="bday" max="2019-12-31" min="2018-01-01" class="form-control">
                   <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">seta</button>
+                    <button class="btn btn-secondary" type="button" (click)="nextDay(+1)" >seta</button>
                   </span>
                 </div>
 

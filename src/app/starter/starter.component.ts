@@ -1,12 +1,24 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { CustomerService } from './../starter/usecases/structure'
+
 @Component({
 	templateUrl: './starter.component.html'
 })
+
 export class StarterComponent implements AfterViewInit {
-	subtitle:string;	
+
+  public day: Date = new Date();
+  public customerService: CustomerService;
+
+
 	constructor() {
-		this.subtitle = "This is some text within a card block."
+
+
 	}
 
-	ngAfterViewInit(){}
+  ngAfterViewInit(){}
+
+  public nextDay(incr: number){
+    this.day = new Date(this.day.getTime()+incr*24*60*60*1000);
+  }
 }
