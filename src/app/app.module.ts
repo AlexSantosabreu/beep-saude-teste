@@ -5,6 +5,7 @@ import { CommonModule, LocationStrategy, HashLocationStrategy } from '@angular/c
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
@@ -25,7 +26,7 @@ import { SpinnerComponent } from './shared/spinner.component';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelSpeed: 2,
-  wheelPropagation: true,
+  wheelPropagation: true
 };
 
 @NgModule({
@@ -43,6 +44,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
     PerfectScrollbarModule,

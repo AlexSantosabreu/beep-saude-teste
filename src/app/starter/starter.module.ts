@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { StarterComponent } from './starter.component';
+import { VisitsService } from '../services/visits.service';
 
 
 const routes: Routes = [{
@@ -18,9 +19,10 @@ const routes: Routes = [{
 @NgModule({
 	imports: [
     	FormsModule,
-    	CommonModule, 
+    	CommonModule,
     	RouterModule.forChild(routes)
     ],
-	declarations: [StarterComponent]
+  declarations: [StarterComponent],
+  providers:[VisitsService]
 })
 export class StarterModule { }

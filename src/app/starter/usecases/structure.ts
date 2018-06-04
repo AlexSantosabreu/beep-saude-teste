@@ -13,7 +13,6 @@ export interface CustomerService {
 
 }
 
-}
 
 export interface Requester  {
   name: string;

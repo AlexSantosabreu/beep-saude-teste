@@ -22,36 +22,55 @@
                  </div> -->
 
 
-                <div class="input-group">
+                <!-- <div class="input-group">
                   <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button" (click)="nextDay(-1)" >seta</button>
+                    <button class="btn btn-secondary" type="button" (click)="nextDay(-1)" ><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                   </span>
                   <input type="date" name="bday" max="2019-12-31" min="2018-01-01" class="form-control">
                   <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button" (click)="nextDay(+1)" >seta</button>
+                    <button class="btn btn-secondary" type="button" (click)="nextDay(+1)" ><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
                   </span>
-                </div>
+                </div> -->
 
-
+                <form class="form-inline">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-secondary" type="button" (click)="nextDay(-1)">
+                          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                        </button>
+                      </span>
+                      <input class="form-control" type="date" placeholder="yyyy-mm-dd" name="dp" >
+                      <div class="input-group-append">
+                        <span class="input-group-btn">
+                          <button class="btn btn-secondary" type="button" (click)="nextDay(+1)">
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                          </button>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </form>
 
               </div>
               <div class="col-md-4">
                 <div class="form-group">
 
-                  <select class="form-control" id="sel1">
-                    <option>Domiciliar e clinica</option>
-                    <option>Apenas clínica</option>
-                    <option>Apenas domiciliar</option>
+                  <select class="form-control" id="modality"  [(ngModel)]="modalitySelected">
+                    <option *ngFor="let m of modality" [value]="m.name" >{{m?.name}}</option>
 
                   </select>
+                  <br>
+                  modalidade: {{modalitySelected}}
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
 
-                  <select class="form-control" id="sel1">
-                    <option>Todos</option>
-                    <option>2</option>
+                  <select class="form-control" id="patner" [(ngModel)]="partner">
+                    <option>Lâmina Icaraí</option>
+                    <option>Beep Vacinas</option>
+                    <option>Lâmina Barra </option>
 
                   </select>
                 </div>
@@ -68,82 +87,39 @@
   </div>
 </div>
 
-<div class="row">
 
+<div class="row">
   <!-- caixa da vaicinação -->
-  <div class="col-lg-12">
+
+  <div class="col-lg-12"  *ngFor="let cust of customerService">
     <div class="card border border-secondary">
-      <div class="d-flex flex-row">
-        <div class="p-10 bg-inverse">
+      <div class="d-flex flex-row"  >
+        <div class="p-10 col-sm-2 col-md-6 col-lg-2 bg-inverse">
           <h3 class="text-white box m-b-0">
             <div class="row">
-              <div class="col-md-4">
-                <i class="ti-heart-broken"></i>
+              <div class="col-md-4" *ngIf="cust.modality == 'office'">
+
+                <i class="fa fa-home fa-2x bg-warning round" aria-hidden="true" [class.bg-warning]="cust.modality == 'office'" [class.bg-danger]="cust.modality == 'homecare'"></i>
+
+               <!--  <label class="label" [class.label-primary]="detalhes.tipo == 'REGULAR'" [class.label-warning]="detalhes.tipo == 'ESPECIAL'">{{detalhes.tipo}}</label> -->
+              </div>
+              <div class="col-md-4 " *ngIf="cust.modality == 'homecare'">
+
+                <i class="fa fa-building-o fa-lg bg-warning round" aria-hidden="true" [class.bg-warning]="cust.modality == 'office'" [class.bg-danger]="cust.modality == 'homecare'"></i>
+
+               <!--  <label class="label" [class.label-primary]="detalhes.tipo == 'REGULAR'" [class.label-warning]="detalhes.tipo == 'ESPECIAL'">{{detalhes.tipo}}</label> -->
               </div>
               <div class="col-md-8">
                 <div class="row ">
-                    <h3 class="m-b-0">Vacinação</h3>
-                    <h5 class="text-muted m-b-0">Domiciliar</h5>
+                  <h3 class="m-b-0">Vacinação</h3>
+                  <h5 class="text-muted m-b-0">{{cust?.modality}}</h5>
                 </div>
                 <br>
                 <div class="row ">
                   <div>
-                    <h4 style="color: #ffffff;">19/04/2018</h4>
-                    <h3 style="color: #ffffff;">08:00</h3>
+                    <h4 style="color: #ffffff;">{{cust?.schedule_date | date:'dd/MM/yy'}}</h4>
+                    <h3 style="color: #ffffff;">{{cust?.schedule_date | date:'shortTime'}}</h3>
                   </div>
-
-                </div>
-              </div>
-
-            </div>
-          </h3>
-        </div>
-       <div class="row">
-         <div class="col-lg-6">
-            <div class="align-self-center m-l-20">
-                <h3 class="m-b-0">Rachel Karen Green</h3>
-                <h5 class="text-muted m-b-0">pedido 6834</h5>
-                <h5> pedido 6834</h5>
-              </div>
-         </div>
-         <div class="col-lg-6">
-            <div >
-                <h3 class="m-b-0">Sei la sei la</h3>
-                <h5 class="text-muted m-b-0">Teste</h5>
-              </div>
-         </div>
-
-
-      </div>
-    </div>
-  </div>
-  <!-- Column -->
-</div>
-</div>
-
-<div class="row">
- <!-- caixa da vaicinação -->
-
- <div class="col-lg-12">
-    <div class="card border border-secondary">
-      <div class="d-flex flex-row">
-        <div class="p-10 col-sm-2 col-md-6 col-lg-2 bg-inverse">
-          <h3 class="text-white box m-b-0">
-            <div class="row">
-              <div class="col-md-4">
-                <i class="ti-heart-broken"></i>
-              </div>
-              <div class="col-md-8">
-                <div class="row ">
-                    <h3 class="m-b-0">Vacinação</h3>
-                    <h5 class="text-muted m-b-0">Domiciliar</h5>
-                </div>
-                <br>
-                <div class="row ">
-                    <div>
-                        <h4 style="color: #ffffff;">19/04/2018</h4>
-                        <h3 style="color: #ffffff;">08:00</h3>
-                      </div>
                 </div>
               </div>
 
@@ -151,101 +127,38 @@
           </h3>
         </div>
         <div class="col-sm-10 col-md-6 col-lg-10 ">
-       <div class="row">
-         <div class="col-lg">
-            <div class="align-self-center m-l-20">
-                <h3 class="m-b-0">Rachel Karen Green</h3>
-                <h5 class="text-muted m-b-0">pedido 6834</h5>
-                <h5> pedido 6834</h5>
-              </div>
-         </div>
-         <div class="col-lg">
-            <div class="align-self-center m-l-10">
-                <h3 class="m-b-0">Sei la sei la</h3>
-                <h5 class="text-muted m-b-0">Teste</h5>
-              </div>
-         </div>
-
-
-      </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
- <!-- Column -->
-<!-- /.row -->
-</div>
-
-
-<div class="row">
-    <!-- caixa da vaicinação -->
-
-    <div class="col-lg-12">
-       <div class="card border border-secondary">
-         <div class="d-flex flex-row">
-           <div class="p-10 col-sm-2 col-md-6 col-lg-2 bg-inverse">
-             <h3 class="text-white box m-b-0">
-               <div class="row">
-                 <div class="col-md-4 ">
-
-                    <i class="fa fa-home fa-2x bg-warning round" aria-hidden="true"></i>
-                   <!-- <i class="ti-heart-broken"></i> -->
-                 </div>
-                 <div class="col-md-8">
-                   <div class="row ">
-                       <h3 class="m-b-0">Vacinação</h3>
-                       <h5 class="text-muted m-b-0">Domiciliar</h5>
-                   </div>
-                   <br>
-                   <div class="row ">
-                       <div>
-                           <h4 style="color: #ffffff;">19/04/2018</h4>
-                           <h3 style="color: #ffffff;">08:00</h3>
-                         </div>
-                   </div>
-                 </div>
-
-               </div>
-             </h3>
-           </div>
-           <div class="col-sm-10 col-md-6 col-lg-10 ">
           <div class="row">
             <div class="col-lg">
-               <div class="align-self-center m-l-20">
-                   <h3 class="m-t-10">Rachel Karen Green</h3>
-                   <h5> pedido <strong>6834</strong> </h5>
-                   <br>
-                   <div>
-                     <!--  <i class="fa fa-home fa-3x bg-warning" aria-hidden="true"></i>
-                      <td style="width:50px;"><span class="round"><img src="assets/images/users/8.jpg" alt="user" width="50"></span></td> -->
+              <div class="align-self-center m-l-20">
+                <h3 class="m-t-10">{{cust?.requester.name}}</h3>
+                <h5> pedido
+                  <strong>{{cust?.ticket_voucher}}</strong>
+                </h5>
+                <br>
+                <div *ngFor="let item of cust?.products" >
+                 <ul id = "lista">
+                   <li><h5> {{item?.quantity}} - {{item?.product_name}} </h5></li>
+                 </ul>
 
-                      <h5> 1 Meningocócita B </h5>
-                      <h5> pedido <strong>6834</strong> </h5>
-                      <h5> pedido <strong>6834</strong> </h5>
-                   </div>
-                 </div>
+                </div>
+              </div>
             </div>
             <div class="col-lg">
-               <div class="align-self-center m-l-10">
-                   <h3 class="m-t-15">Parceiro: Beep Vacinas</h3>
-                   <h5>1-15 Morton St, New York, NY 10014,EUA</h5>
-                   <h5>(21)9999-45812</h5>
-                 </div>
+              <div class="align-self-center m-l-10">
+                <h3 class="m-t-15">{{cust?.partner.name}}</h3>
+                <h5>{{cust?.partner.partner_address}}</h5>
+                <h5>{{cust?.partner.phone}}</h5>
+              </div>
             </div>
 
 
-         </div>
-         </div>
-       </div>
-     </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-   </div>
+  </div>
 
-    <!-- Column -->
-   <!-- /.row -->
-   </div>
-<br>
-
-
+  <!-- Column -->
+  <!-- /.row -->
+</div>
