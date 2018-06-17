@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+import { NgPipesModule, FilterByPipe } from 'ngx-pipes';
 import { StarterComponent } from './starter.component';
 import { VisitsService } from '../services/visits.service';
 
@@ -19,10 +20,11 @@ const routes: Routes = [{
 @NgModule({
 	imports: [
     	FormsModule,
-    	CommonModule,
+      CommonModule,
+      NgPipesModule,
     	RouterModule.forChild(routes)
     ],
   declarations: [StarterComponent],
-  providers:[VisitsService]
+  providers:[VisitsService, FilterByPipe]
 })
 export class StarterModule { }

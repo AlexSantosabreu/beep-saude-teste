@@ -259,5 +259,69 @@
       ],
       "created_at":"2018-05-08T18:53:11.822-03:00",
       "updated_at":"2018-05-08T18:53:11.822-03:00"
-   }
+   },
+   {
+    "id":11,
+    "call_id":9055,
+    "ticket_voucher":"9054",
+    "schedule_date":"2018-06-05T07:30:00.000-03:00",
+    "product_type":"vaccines",
+    "modality":"homecare",
+    "requester":{
+      "name":"Rafaela Geisiane",
+      "phone":"(21)99878-9098"
+   },
+   "partner":{
+       "id":5,
+       "name":"Beep Vacinas",
+       "phone":"(21)35773-231",
+       "partner_address":"Rua da Glória, 140"
+    },
+    "products":[
+       {
+          "quantity":1,
+          "product_name":"Hexavalente",
+          "product_category_name":"Infantil"
+       },
+       {
+          "quantity":1,
+          "product_name":"Herpes Zóster",
+          "product_category_name":"Infantil"
+       }
+    ],
+    "created_at":"2018-05-08T18:53:11.822-03:00",
+    "updated_at":"2018-05-08T18:53:11.822-03:00"
+ },
+ {
+  "id":12,
+  "call_id":9056,
+  "ticket_voucher":"9056",
+  "schedule_date":"2018-06-05T07:30:00.000-03:00",
+  "product_type":"vaccines",
+  "modality":"homecare",
+  "requester":{
+    "name":"Rafaela Geisiane",
+    "phone":"(21)99878-9098"
+ },
+ "partner":{
+     "id":5,
+     "name":"Beep Vacinas",
+     "phone":"(21)35773-231",
+     "partner_address":"Rua da Glória, 140"
+  },
+  "products":[
+     {
+        "quantity":1,
+        "product_name":"Hexavalente",
+        "product_category_name":"Infantil"
+     },
+     {
+        "quantity":1,
+        "product_name":"Herpes Zóster",
+        "product_category_name":"Infantil"
+     }
+  ],
+  "created_at":"2018-05-08T18:53:11.822-03:00",
+  "updated_at":"2018-05-08T18:53:11.822-03:00"
+}
 ]}

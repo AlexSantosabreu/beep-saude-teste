@@ -36,7 +36,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button" (click)="nextDay(-1)">
+                        <button class="btn btn-secondary" type="button" (click)="nextDay(-1)" (select)=$event>
                           <i class="fa fa-chevron-left" aria-hidden="true"></i>
                         </button>
                       </span>
@@ -54,27 +54,32 @@
 
               </div>
               <div class="col-md-4">
+
                 <div class="form-group">
 
-                  <select class="form-control" id="modality"  [(ngModel)]="modalitySelected">
-                    <option *ngFor="let m of modality" [value]="m.name" >{{m?.name}}</option>
+                  <select class="form-control"  id="modality" name="modality"  [(ngModel)]="modalitySelected"  >
+                    <option *ngFor="let m of modality" [value]="m.modality" >{{m?.name}}</option>
 
                   </select>
                   <br>
-                  modalidade: {{modalitySelected}}
+                  modalidade: {{modalitySelected?.name}}
+
+
                 </div>
+
               </div>
               <div class="col-md-4">
                 <div class="form-group">
 
-                  <select class="form-control" id="patner" [(ngModel)]="partner">
-                    <option>Lâmina Icaraí</option>
-                    <option>Beep Vacinas</option>
-                    <option>Lâmina Barra </option>
 
+                  <select class="form-control" id="patner" name="partner" [(ngModel)]="partenerSelected" >
+                    <option *ngFor="let p of partner" >{{p?.name}}</option>
                   </select>
+                  <br>
+                  partener: {{p?.name}}
                 </div>
               </div>
+
             </div>
 
 
@@ -91,7 +96,7 @@
 <div class="row">
   <!-- caixa da vaicinação -->
 
-  <div class="col-lg-12"  *ngFor="let cust of customerService">
+  <div class="col-lg-12"  *ngFor="let cust of customerService | filterBy: ['modality']: modalitySelected | filterBy: ['partner.name']: partenerSelected">
     <div class="card border border-secondary">
       <div class="d-flex flex-row"  >
         <div class="p-10 col-sm-2 col-md-6 col-lg-2 bg-inverse">
@@ -99,21 +104,22 @@
             <div class="row">
               <div class="col-md-4" *ngIf="cust.modality == 'office'">
 
-                <i class="fa fa-home fa-2x bg-warning round" aria-hidden="true" [class.bg-warning]="cust.modality == 'office'" [class.bg-danger]="cust.modality == 'homecare'"></i>
+                <i class="fa fa-home fa-2x bg-warning round" aria-hidden="true" class="fa fa-building-o fa-lg bg-warning round"[class.bg-warning]="cust.modality == 'homecare'" [class.bg-danger]="cust.modality == 'office'"></i>
 
                <!--  <label class="label" [class.label-primary]="detalhes.tipo == 'REGULAR'" [class.label-warning]="detalhes.tipo == 'ESPECIAL'">{{detalhes.tipo}}</label> -->
               </div>
               <div class="col-md-4 " *ngIf="cust.modality == 'homecare'">
 
-                <i class="fa fa-building-o fa-lg bg-warning round" aria-hidden="true" [class.bg-warning]="cust.modality == 'office'" [class.bg-danger]="cust.modality == 'homecare'"></i>
+                <i class="fa fa-home fa-2x bg-warning round" aria-hidden="true" aria-hidden="true" [class.bg-warning]="cust.modality == 'homecare'" [class.bg-danger]="cust.modality == 'office'"></i>
 
                <!--  <label class="label" [class.label-primary]="detalhes.tipo == 'REGULAR'" [class.label-warning]="detalhes.tipo == 'ESPECIAL'">{{detalhes.tipo}}</label> -->
               </div>
               <div class="col-md-8">
                 <div class="row ">
                   <h3 class="m-b-0">Vacinação</h3>
-                  <h5 class="text-muted m-b-0">{{cust?.modality}}</h5>
+
                 </div>
+                <div> <h5 class="text-muted m-b-0">{{cust?.modality}}</h5></div>
                 <br>
                 <div class="row ">
                   <div>
@@ -136,9 +142,9 @@
                 </h5>
                 <br>
                 <div *ngFor="let item of cust?.products" >
-                 <ul id = "lista">
-                   <li><h5> {{item?.quantity}} - {{item?.product_name}} </h5></li>
-                 </ul>
+
+                    {{item?.quantity}} - {{item?.product_name}}
+
 
                 </div>
               </div>
