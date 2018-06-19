@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+
+import { BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { NgPipesModule, FilterByPipe } from 'ngx-pipes';
 import { StarterComponent } from './starter.component';
 import { VisitsService } from '../services/visits.service';
+import { FilterPartnerPipe } from './../shared/filter-partner.pipe';
 
 
 const routes: Routes = [{
@@ -22,9 +25,10 @@ const routes: Routes = [{
     	FormsModule,
       CommonModule,
       NgPipesModule,
-    	RouterModule.forChild(routes)
+      RouterModule.forChild(routes),
+      BsDatepickerModule.forRoot()
     ],
-  declarations: [StarterComponent],
+  declarations: [StarterComponent, FilterPartnerPipe],
   providers:[VisitsService, FilterByPipe]
 })
 export class StarterModule { }

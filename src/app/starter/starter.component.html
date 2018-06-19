@@ -11,36 +11,27 @@
       <div class="row">
 
         <div class="col-sm-12 col-xs-12">
-          <form>
+          <form >
 
             <div class="row">
               <div class="col-md-4">
-                <!-- <div class="form-group">
 
-                  <input type="date" name="bday" max="2019-12-31"
-                         min="2018-01-01" class="form-control">
-                 </div> -->
-
-
-                <!-- <div class="input-group">
-                  <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button" (click)="nextDay(-1)" ><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
-                  </span>
-                  <input type="date" name="bday" max="2019-12-31" min="2018-01-01" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button" (click)="nextDay(+1)" ><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
-                  </span>
-                </div> -->
-
-                <form class="form-inline">
-                  <div class="form-group">
+                <form class="form-inline" >
+                  <div class="form-group" >
                     <div class="input-group">
                       <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button" (click)="nextDay(-1)" (select)=$event>
+                        <button class="btn btn-secondary" type="button" (click)="nextDay(-1)" >
                           <i class="fa fa-chevron-left" aria-hidden="true"></i>
                         </button>
                       </span>
-                      <input class="form-control" type="date" placeholder="yyyy-mm-dd" name="dp" >
+
+                     <!--  <input class="form-control" type="date" placeholder="yyyy-mm-dd" name="dp" > -->
+                     <input type="text"
+           class="form-control"
+           #dp="bsDatepicker"
+           bsDatepicker
+           [bsValue]="bsValue"
+            (bsValueChange)="onValueChange($event)">
                       <div class="input-group-append">
                         <span class="input-group-btn">
                           <button class="btn btn-secondary" type="button" (click)="nextDay(+1)">
@@ -49,6 +40,9 @@
                         </span>
                       </div>
                     </div>
+                  </div>
+                  <div class="mb-3">
+                    <pre class="card card-block card-header" *ngIf="data">Changed date is {{data | date}}</pre>
                   </div>
                 </form>
 
@@ -96,7 +90,7 @@
 <div class="row">
   <!-- caixa da vaicinação -->
 
-  <div class="col-lg-12"  *ngFor="let cust of customerService | filterBy: ['modality']: modalitySelected | filterBy: ['partner.name']: partenerSelected">
+  <div class="col-lg-12"  *ngFor="let cust of customerService | filterPartner: modalitySelected | filterBy: ['partner.name']: partenerSelected">
     <div class="card border border-secondary">
       <div class="d-flex flex-row"  >
         <div class="p-10 col-sm-2 col-md-6 col-lg-2 bg-inverse">
